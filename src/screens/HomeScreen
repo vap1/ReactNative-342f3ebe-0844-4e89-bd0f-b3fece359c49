@@ -1,0 +1,42 @@
+
+import React, { useEffect, useState } from 'react';
+import { View, Text, Button } from 'react-native';
+import { APIService } from '../services/APIService';
+
+interface Lead {
+  leadId: string;
+  contactDetails: string;
+  relevantInfo: string;
+}
+
+const HomeScreen: React.FC = () => {
+  const [leads, setLeads] = useState<Lead[]>([]);
+
+  useEffect(() => {
+    fetchLeads();
+  }, []);
+
+  const fetchLeads = async () => {
+    try {
+      const response = await APIService.getLeads();
+      setLeads(response.data);
+    } catch (error) {
+      console.error('Error fetching leads:', error);
+    }
+  };
+
+  return (
+    <View>
+      <Text>Home Screen</Text>
+      <Button title="Fetch Leads" onPress={fetchLeads} />
+      {leads.map((lead) => (
+        <View key={lead.leadId}>
+          <Text>Contact Details: {lead.contactDetails}</Text>
+          <Text>Relevant Info: {lead.relevantInfo}</Text>
+        </View>
+      ))}
+    </View>
+  );
+};
+
+export default HomeScreen;
