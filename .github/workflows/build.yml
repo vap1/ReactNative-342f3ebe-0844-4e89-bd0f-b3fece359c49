@@ -7,18 +7,21 @@ on:
   pull_request_review:
 
 jobs:
-  install-and-test:
+  # install-and-test:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - name: Install npm dependencies
+  #       run: |
+  #         npm install
+  build-typescript:
+    # needs: install-and-test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Install npm dependencies
         run: |
           npm install
-  build-typescript:
-    needs: install-and-test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
       - name: Build typescript
         run: |
           npx tsc
