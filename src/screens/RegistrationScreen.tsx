@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, Alert } from 'react-native';
 
+const API_ENDPOINT = 'https://your-api-endpoint.com'; // Replace with your actual API endpoint
+
 const RegistrationScreen: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -10,7 +12,6 @@ const RegistrationScreen: React.FC = () => {
 
   const handleRegistration = () => {
     // Perform API call to register user
-    // Replace `API_ENDPOINT` with the actual API endpoint
     fetch(API_ENDPOINT + '/register', {
       method: 'POST',
       headers: {
