@@ -1,8 +1,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList } from 'react-native';
-import { Lead } from '../models/Lead';
-import { getLeads } from '../api/leads';
+import { Lead } from '../types/LeadTypes';
+import { getLeads } from '../apis/LeadApi';
 
 const LeadManagementScreen: React.FC = () => {
   const [leads, setLeads] = useState<Lead[]>([]);
