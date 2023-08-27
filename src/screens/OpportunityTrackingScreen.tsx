@@ -1,16 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList } from 'react-native';
-import { getOpportunities } from '../api/opportunities';
-
-interface Opportunity {
-  id: string;
-  leadId: string;
-  assignedTo: string;
-  status: string;
-  notes: string;
-  documents: string[];
-}
+import { getOpportunities, Opportunity } from '../apis/OpportunityApi';
 
 const OpportunityTrackingScreen: React.FC = () => {
   const [opportunities, setOpportunities] = useState<Opportunity[]>([]);
@@ -30,7 +21,7 @@ const OpportunityTrackingScreen: React.FC = () => {
 
   const renderOpportunityItem = ({ item }: { item: Opportunity }) => (
     <View>
-      <Text>Opportunity ID: {item.id}</Text>
+      <Text>Opportunity ID: {item.opportunityId}</Text>
       <Text>Lead ID: {item.leadId}</Text>
       <Text>Assigned To: {item.assignedTo}</Text>
       <Text>Status: {item.status}</Text>
@@ -45,7 +36,7 @@ const OpportunityTrackingScreen: React.FC = () => {
       <FlatList
         data={opportunities}
         renderItem={renderOpportunityItem}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.opportunityId}
       />
     </View>
   );
