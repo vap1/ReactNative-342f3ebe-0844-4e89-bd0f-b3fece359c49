@@ -1,8 +1,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity } from 'react-native';
-import { TaskDetails } from '../api/types';
-import { getTasks } from '../api/tasks';
+import { TaskDetails } from '../types/TaskTypes';
+import { getTasks } from '../apis/TaskApi';
 
 const TaskAssignmentScreen: React.FC = () => {
   const [tasks, setTasks] = useState<TaskDetails[]>([]);
