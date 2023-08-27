@@ -1,8 +1,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList } from 'react-native';
-import { Employee } from '../models/Employee';
-import { getEmployees } from '../api/employees';
+import { Employee } from '../types/EmployeeTypes';
+import { getEmployees } from '../apis/EmployeeApi';
 
 const EmployeeManagementScreen: React.FC = () => {
   const [employees, setEmployees] = useState<Employee[]>([]);
