@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList } from 'react-native';
 import { Employee } from '../types';
-import { getEmployees } from '../api';
+import { getEmployees } from '../apis/EmployeeApi';
 
 const EmployeeList: React.FC = () => {
   const [employees, setEmployees] = useState<Employee[]>([]);
